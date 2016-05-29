@@ -1,5 +1,5 @@
 <?PHP
-	$con = mysqli_connect("localhost","android","anshul","android");
+	$con = mysqli_connect("localhost","test","test","test");
 	/* check connection */
 	if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
@@ -13,7 +13,7 @@
 	
 
 	/* create a prepared statement */
-	if ($statement = mysqli_prepare($con, "INSERT INTO User (name, age, username, password) VALUES (?, ?, ?, ?)")) {
+	if ($statement = mysqli_prepare($con, "INSERT INTO android_user (name, age, username, password) VALUES (?, ?, ?, ?)")) {
 
 		  /* bind parameters for markers */
 		  mysqli_stmt_bind_param($statement,  "siss", $name, $age, $username, $password);

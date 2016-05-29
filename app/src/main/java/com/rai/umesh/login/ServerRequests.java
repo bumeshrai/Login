@@ -23,7 +23,7 @@ import java.net.URLEncoder;
 public class ServerRequests {
     ProgressDialog progressDialog;
     public static final int CONNECTION_TIMEOUT = 1000 * 15;
-    public static final String SERVER_ADDRESS = "http://52.90.177.177/";
+    public static final String SERVER_ADDRESS = "http://52.90.177.177/logAndroid";
 
 
 
