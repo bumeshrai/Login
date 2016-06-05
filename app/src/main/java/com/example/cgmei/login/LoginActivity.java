@@ -42,20 +42,25 @@ public class LoginActivity extends AppCompatActivity {
                 final String username = etUsername.getText().toString();
                 final String password = etPassword.getText().toString();
 
+
                 // Response received from the server
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            Log.i("Here", response);
-                            boolean success = jsonResponse.getBoolean("success");
-                            Log.i("Here",  String.valueOf(success));
+                            Log.i("value", jsonResponse.toString());
+                            boolean success = jsonResponse.getJSONObject("data").getBoolean("success");
+                            String auth_key = jsonResponse.getJSONObject("data").getString("auth_key");
+                            String userid = jsonResponse.getJSONObject("data").getString("id");
+                            //Log.i("value",  "success: " + String.valueOf(success) + ", auth_key: "+ auth_key);
 
                             if (success) {
 
                                 Intent intent = new Intent(LoginActivity.this, UserAreaActivity.class);
-                                 intent.putExtra("username", username);
+                                intent.putExtra("username", username);
+                                intent.putExtra("auth_key", auth_key);
+                                intent.putExtra("userid", userid);
                                 LoginActivity.this.startActivity(intent);
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);

@@ -12,12 +12,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/tvWelcomeMsg"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,9 +26,11 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Username"
         android:id="@+id/tvUsername"
-        android:layout_below="@+id/tvWelcomeMsg"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvWelcomeMsg"
+        android:layout_alignRight="@+id/tvWelcomeMsg"
+        android:layout_alignEnd="@+id/tvWelcomeMsg" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -36,26 +39,50 @@
         android:layout_below="@+id/tvUsername"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignRight="@+id/tvUsername"
+        android:layout_alignEnd="@+id/tvUsername" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Age"
-        android:id="@+id/tvAge"
-        android:layout_below="@+id/etUsername"
+        android:text="Access Code"
+        android:id="@+id/tvCode"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etUsername"
+        android:layout_alignRight="@+id/etUsername"
+        android:layout_alignEnd="@+id/etUsername" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/etAge"
-        android:layout_below="@+id/tvAge"
+        android:id="@+id/etCode"
+        android:layout_below="@+id/tvCode"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/etUsername"
-        android:layout_alignEnd="@+id/etUsername" />
+        android:layout_alignRight="@+id/tvCode"
+        android:layout_alignEnd="@+id/tvCode" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="User ID"
+        android:id="@+id/tvId"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etCode"
+        android:layout_alignRight="@+id/etCode"
+        android:layout_alignEnd="@+id/etCode" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etId"
+        android:layout_below="@+id/tvId"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/tvId"
+        android:layout_alignEnd="@+id/tvId" />
 </RelativeLayout>
