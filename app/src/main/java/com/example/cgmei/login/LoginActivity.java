@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         final TextView tvRegisterLink = (TextView) findViewById(R.id.tvRegisterHere);
         final Button btLogin = (Button) findViewById(R.id.btLogin);
 
+        // Go for Registeration
         tvRegisterLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // User wants to login
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,19 +48,23 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
+                            // collect the response and check for success in the database access
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
 
+                            // if successful in username/password, display the captured data
                             if (success) {
                                 String name = jsonResponse.getString("name");
                                 int age = jsonResponse.getInt("age");
 
+                                // save the date to process and hand over
                                 Intent intent = new Intent(LoginActivity.this, UserAreaActivity.class);
                                 intent.putExtra("name", name);
                                 intent.putExtra("age", age);
                                 intent.putExtra("username", username);
                                 LoginActivity.this.startActivity(intent);
                             } else {
+                                // username/password or database access failed
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                                 builder.setMessage("Login Failed")
                                         .setNegativeButton("Retry", null)
@@ -72,6 +78,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 };
 
+                // pass on the username/password and let Volley do the request/response routine
+                // and pass back the retrieved values
                 LoginRequest loginRequest = new LoginRequest(username, password, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);

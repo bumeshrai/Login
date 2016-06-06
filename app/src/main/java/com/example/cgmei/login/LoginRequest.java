@@ -6,6 +6,7 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+// using Volley for net access and retrieval
 public class LoginRequest extends StringRequest {
     private static final String LOGIN_REQUEST_URL = "http://cmrlvent.co.in/logAndroid/Login.php";
     private Map<String, String> params;
