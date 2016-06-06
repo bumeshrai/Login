@@ -15,18 +15,20 @@ public class UserAreaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_area);
 
         Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
         String username = intent.getStringExtra("username");
-        int age = intent.getIntExtra("age", -1);
+        String auth_key = intent.getStringExtra("auth_key");
+        String userid = intent.getStringExtra("userid");
 
         TextView tvWelcomeMsg = (TextView) findViewById(R.id.tvWelcomeMsg);
         EditText etUsername = (EditText) findViewById(R.id.etUsername);
-        EditText etAge = (EditText) findViewById(R.id.etAge);
+        EditText etCode = (EditText) findViewById(R.id.etCode);
+        EditText etUserid = (EditText) findViewById(R.id.etId);
 
         // Display user details
-        String message = name + " welcome to your user area";
+        String message = "Access Code for user:  " + username;
         tvWelcomeMsg.setText(message);
         etUsername.setText(username);
-        etAge.setText(age + "");
+        etCode.setText(auth_key);
+        etUserid.setText(userid);
     }
 }

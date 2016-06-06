@@ -8,7 +8,7 @@ import java.util.Map;
 
 // using Volley for net access and retrieval
 public class LoginRequest extends StringRequest {
-    private static final String LOGIN_REQUEST_URL = "http://cmrlvent.co.in/logAndroid/Login.php";
+    private static final String LOGIN_REQUEST_URL = "http://cmrlvent.co.in/assetMaint/api/web/user/login";
     private Map<String, String> params;
 
     public LoginRequest(String username, String password, Response.Listener<String> listener) {

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                 final String username = etUsername.getText().toString();
                 final String password = etPassword.getText().toString();
 
+
                 // Response received from the server
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -50,18 +52,20 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             // collect the response and check for success in the database access
                             JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
+                            Log.i("value", jsonResponse.toString());
+                            boolean success = jsonResponse.getJSONObject("data").getBoolean("success");
+                            String auth_key = jsonResponse.getJSONObject("data").getString("auth_key");
+                            String userid = jsonResponse.getJSONObject("data").getString("id");
+                            //Log.i("value",  "success: " + String.valueOf(success) + ", auth_key: "+ auth_key);
 
                             // if successful in username/password, display the captured data
                             if (success) {
-                                String name = jsonResponse.getString("name");
-                                int age = jsonResponse.getInt("age");
 
                                 // save the date to process and hand over
                                 Intent intent = new Intent(LoginActivity.this, UserAreaActivity.class);
-                                intent.putExtra("name", name);
-                                intent.putExtra("age", age);
                                 intent.putExtra("username", username);
+                                intent.putExtra("auth_key", auth_key);
+                                intent.putExtra("userid", userid);
                                 LoginActivity.this.startActivity(intent);
                             } else {
                                 // username/password or database access failed
